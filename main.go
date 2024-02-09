@@ -94,7 +94,7 @@ func main() {
 
 	// Load generator parameters
 	numThreads := 4
-	numDataPoints := 100
+	numDataPoints := 10000
 	complexities := []int{1, 2, 3}
 
 	// Use a channel to synchronize threads
