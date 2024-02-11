@@ -245,11 +245,13 @@ func insertUser(db *sql.DB, user User, addressID int) {
 
 // Function to execute read and write requests
 func executeRequests(db *sql.DB, csvWriter *csv.Writer, numDataPoints, complexity int, requestType string) {
-	startTime := time.Now()
+	startTimeLoop := time.Now()
 
-	for i := 1; time.Since(startTime) <= 10*time.Minute; i++ {
+	for i := 1; time.Since(startTimeLoop) <= 10*time.Minute; i++ {
 		// Execute write or read request based on complexity and request type
 		<-workerPool
+		startTime := time.Now()
+
 		if requestType == "write" {
 			// Write request
 			// ... Perform the SQL INSERT operation
